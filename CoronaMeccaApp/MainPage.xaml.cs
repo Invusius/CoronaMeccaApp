@@ -7,10 +7,12 @@ public partial class MainPage : ContentPage
 	public MainPage()
 	{
 		InitializeComponent();
-	}
+
+    }
 
 	private void OnCounterClicked(object sender, EventArgs e)
 	{
+		test(); 
 		count++;
 
 		if (count == 1)
@@ -20,5 +22,24 @@ public partial class MainPage : ContentPage
 
 		SemanticScreenReader.Announce(CounterBtn.Text);
 	}
+
+	async void test()
+	{
+
+		string tester = ""; 
+
+		tester = await SecureStorage.Default.GetAsync("oauth_token"); 
+
+		if(tester == null)
+		{
+			tester = "nope"; 
+		}
+
+		testLable.Text = tester; 
+
+		await DisplayAlert("tester", tester, "OK"); 
+
+    }
+
 }
 

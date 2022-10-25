@@ -1,3 +1,5 @@
+using Newtonsoft.Json;
+
 namespace CoronaMeccaApp;
 
 public partial class LoginPage : ContentPage
@@ -15,9 +17,9 @@ public partial class LoginPage : ContentPage
 
 		if (Username.Text != null && Password != null)
 		{
-
-			// logind
-			await Shell.Current.GoToAsync("//Home"); 
+			await login(); 
+            // logind
+            await Shell.Current.GoToAsync("//Home"); 
 
             await Navigation.PushAsync(new MainPage()); 
 
@@ -30,6 +32,34 @@ public partial class LoginPage : ContentPage
 		}
 
 
+	}
+
+
+	private async Task<bool> login()
+	{
+		/*
+		client = new HttpClient();
+
+		HttpResponseMessage response = await client.GetAsync("");
+
+		response.EnsureSuccessStatusCode(); 
+		var jsonstring = await response.Content.ReadAsStringAsync();
+		var User = JsonConvert.DeserializeObject(jsonstring);
+
+		if (User != null)
+		{
+
+
+			return true;
+
+		}
+		else
+		{
+			return false;
+		}
+		*/
+			await SecureStorage.Default.SetAsync("oauth_token", "testval"); 
+		return true;
 	}
 
 
