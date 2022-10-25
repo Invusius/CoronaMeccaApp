@@ -13,7 +13,18 @@
             
         </StackLayout>
         <Entry 
-            x:Name="entry"
+            x:Name="Username"
+            Placeholder="Brugernavn"
+            />
+        <Entry 
+            x:Name="Password"
+            Placeholder="Password"
+            IsPassword="True"
+            />
+        <Button 
+            x:Name="LoginBTN"
+            Text="Log ind"
+            Clicked="LoginBTN_Clicked"
             />
     </VerticalStackLayout>
      

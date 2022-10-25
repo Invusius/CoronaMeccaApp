@@ -1,14 +1,47 @@
 <?xml version="1.0" encoding="UTF-8" ?>
+
 <Shell
     x:Class="CoronaMeccaApp.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:CoronaMeccaApp"
-    Shell.FlyoutBehavior="Disabled">
+    >
 
+    <TabBar Route="Login">
+        <ShellContent
+            ContentTemplate="{DataTemplate local:LoginPage}"
+            />
+    </TabBar>
+    
+    
+    
+    <TabBar Route="Home">
+        
+        <Tab Title="QR">
+            <ShellContent
+                Title="QR"
+                ContentTemplate="{DataTemplate local:QrPage}"
+                Route="QRPage" 
+               />
+        </Tab>
+        
+        <Tab Title="Home">
+            <ShellContent
+                Title="HOME"
+                ContentTemplate="{DataTemplate local:MainPage}"
+                Route="MainPage" 
+                 />
+        </Tab>    
+    </TabBar>
+    <!--
     <ShellContent
-        Title="Home"
+        Title="loginPage"
         ContentTemplate="{DataTemplate local:LoginPage}"
+        Route="LoginPage" />
+    <ShellContent 
+        Title="Home"
+        ContentTemplate="{DataTemplate local:MainPage}"
         Route="MainPage" />
+    -->
 
 </Shell>
