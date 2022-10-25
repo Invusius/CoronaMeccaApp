@@ -17,6 +17,13 @@
     
     <TabBar Route="Home">
         
+        <Tab Title="Home">
+            <ShellContent
+                Title="HOME"
+                ContentTemplate="{DataTemplate local:MainPage}"
+                Route="MainPage" 
+                 />
+        </Tab>    
         <Tab Title="QR">
             <ShellContent
                 Title="QR"
@@ -25,13 +32,6 @@
                />
         </Tab>
         
-        <Tab Title="Home">
-            <ShellContent
-                Title="HOME"
-                ContentTemplate="{DataTemplate local:MainPage}"
-                Route="MainPage" 
-                 />
-        </Tab>    
     </TabBar>
     <!--
     <ShellContent
