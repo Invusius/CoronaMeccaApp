@@ -49,6 +49,11 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Remove="Resources\Images\plusNoFill.png" />
+	  <None Remove="Resources\Images\plus_noFill.png" />
+	</ItemGroup>
+
+	<ItemGroup>
 	  <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
 	  <PackageReference Include="ZXing.Net.Maui" Version="0.2.0-preview.2" />
 	  <PackageReference Include="ZXing.Net.Maui.Controls" Version="0.2.0-preview.2" />
