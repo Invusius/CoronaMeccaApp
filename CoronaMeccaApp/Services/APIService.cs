@@ -6,7 +6,14 @@ using System.Threading.Tasks;
 
 namespace CoronaMeccaApp.Services
 {
-    internal class APIService : IAPIService
+    public class APIService : IAPIService
     {
+
+        HttpClient client;
+        public APIService()
+        {
+            client = new HttpClient();
+        }
+
     }
 }

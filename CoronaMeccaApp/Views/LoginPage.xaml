@@ -15,16 +15,19 @@
         <Entry 
             x:Name="Username"
             Placeholder="Brugernavn"
+            Text="{Binding Username}"
+            
             />
         <Entry 
             x:Name="Password"
             Placeholder="Password"
+            Text="{Binding Password}"
             IsPassword="True"
             />
         <Button 
             x:Name="LoginBTN"
             Text="Log ind"
-            Clicked="LoginBTN_Clicked"
+            Command="{Binding logincommand}"
             />
     </VerticalStackLayout>
      

@@ -1,19 +1,37 @@
-﻿namespace CoronaMeccaApp;
+﻿using AndroidX.Lifecycle;
+using System.Collections.ObjectModel;
+
+namespace CoronaMeccaApp;
 
 public partial class MainPage : ContentPage
 {
 	int count = 0;
 
-	public MainPage()
+	public ObservableCollection<int> Test { get; }
+
+    public List<int> zones { get; set; }
+
+    public MainPage()
 	{
 		InitializeComponent();
-		test(); 
+        
+		Test = new ObservableCollection<int>();
+        
+
+        test();
+        zones = new List<int>();
+		
 
     }
 
 	private void OnCounterClicked(object sender, EventArgs e)
 	{
-		count++;
+
+		Test.Add(1); 
+		
+		zones.Add(1);
+
+        count++;
 
 		if (count == 1)
 			CounterBtn.Text = $"Clicked {count} time";
