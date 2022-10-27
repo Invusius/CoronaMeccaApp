@@ -11,21 +11,23 @@
             IsTorchOn="False" 
             WidthRequest="300"
             HeightRequest="350"
-            BarcodesDetected="CameraBarcodeReaderView_BarcodesDetected" />
+            BarcodesDetected="CameraBarcodeReaderView_BarcodesDetected" 
+            
+            />
         <Label 
             x:Name="qrlable"
-            Text="Qr Text"
+            Text="{Binding qrText}"
             Margin="10"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
         <ImageButton 
             x:Name="addBTN"
-            Source="plusnofill.png"
+            Source="{Binding addBtnSource}"
             WidthRequest="50"
             HeightRequest="50"
             VerticalOptions="End"
             HorizontalOptions="End"
-            Clicked="addBTN_Clicked"
+            Command="{Binding addBtnCommand}"
             
             />
 

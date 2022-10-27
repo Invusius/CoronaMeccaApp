@@ -1,52 +1,24 @@
+using CoronaMeccaApp.ViewModels;
+
 namespace CoronaMeccaApp;
 
 public partial class QrPage : ContentPage
 {
-	public QrPage()
+	public QrPage(QrPageViewModel qrPageViewModel)
 	{
 		InitializeComponent();
+		BindingContext = qrPageViewModel; 
 
-	}
-	bool isadd = false;
-
-	private void CameraBarcodeReaderView_BarcodesDetected(object sender, ZXing.Net.Maui.BarcodeDetectionEventArgs e)
-	{
-        if (isadd == false)
-        {
-			qrlable.Text = "se info";
-			// send get request
-        }
-        else
-        {
-			qrlable.Text = "add info";
-			// send post request 
-        }
-        /*
-        Dispatcher.Dispatch(() =>
-		{
-			// get barcode result e.Results[0].Value; 
-			qrlable.Text = e.Results[0].Value; 
-
-        }); 
-		*/
 
     }
 
-	private void addBTN_Clicked(object sender, EventArgs e)
-	{
-		
+    private void CameraBarcodeReaderView_BarcodesDetected(object sender, ZXing.Net.Maui.BarcodeDetectionEventArgs e)
+    {
 
-		if(isadd == false)
-		{
-			addBTN.Source = "plus.png";
-            isadd = true;
+        ((QrPageViewModel)BindingContext).ScanComplete(e.Results[0].Value); 
 
-        }
-		else
-		{
-            addBTN.Source = "plusnofill.png";
-            isadd = false;
-        }
+        
 
     }
+
 }

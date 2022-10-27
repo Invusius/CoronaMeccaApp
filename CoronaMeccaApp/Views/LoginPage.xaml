@@ -24,6 +24,12 @@
             Text="{Binding Password}"
             IsPassword="True"
             />
+        <Label 
+            x:Name="loginError"
+            Text="{Binding LoginError}"
+            TextColor="Red"
+            
+            />
         <Button 
             x:Name="LoginBTN"
             Text="Log ind"

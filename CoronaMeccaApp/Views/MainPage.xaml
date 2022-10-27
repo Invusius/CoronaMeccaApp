@@ -17,9 +17,9 @@
                 />
             <Button
                 x:Name="CounterBtn"
-                Text="Click me"
+                Text="{Binding CounterBtn}"
                 SemanticProperties.Hint="Counts the number of times you click"
-                Clicked="OnCounterClicked"
+                Command="{Binding onCounterClicked}"
                 HorizontalOptions="Center" />
 
             <ListView ItemsSource="{Binding Test}"  >
