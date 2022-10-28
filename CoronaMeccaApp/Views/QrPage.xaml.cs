@@ -21,7 +21,7 @@ public partial class QrPage : ContentPage
 
     }
 
-
+    // zxing camera bug workaround zing wont open the camera again after it has been closed 
     protected override async void OnAppearing()
     {
         base.OnAppearing();
