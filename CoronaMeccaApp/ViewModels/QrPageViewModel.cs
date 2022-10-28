@@ -11,7 +11,6 @@ namespace CoronaMeccaApp.ViewModels
     {
 
         public Command addBtnCommand { get; }
-        public BarcodeDetectionEventArgs QrRead; 
 
         private string _qrText;
         public string qrText { get => _qrText; set { _qrText = value; OnPropertyChanged(); } }
@@ -30,7 +29,7 @@ namespace CoronaMeccaApp.ViewModels
         }
 
         bool isadd = false;
-
+        
         public void ScanComplete(object sender)
         {
             
