@@ -14,6 +14,8 @@ public partial class LoginPage : ContentPage
 
 	private async void Button_Clicked(object sender, EventArgs e)
 	{
+        //SecureStorage.Default.RemoveAll();
+
         await Shell.Current.GoToAsync("//Home");
         await Shell.Current.GoToAsync($"//{nameof(MainPage)}");
     }

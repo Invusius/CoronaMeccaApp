@@ -12,11 +12,11 @@ public partial class MainPage : ContentPage
 	{
 		InitializeComponent();
 
-        BindingContext = mainPageViewModel; 
+        BindingContext = mainPageViewModel;
 
     }
-
-
+    
+    
 
 }
 

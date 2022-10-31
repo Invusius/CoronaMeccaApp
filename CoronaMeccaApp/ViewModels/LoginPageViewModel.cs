@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using CoronaMeccaApp.Models;
 using AndroidX.Annotations;
+using CoronaMeccaApp.Services;
 
 namespace CoronaMeccaApp.ViewModels
 {
@@ -36,82 +37,49 @@ namespace CoronaMeccaApp.ViewModels
             
             if (Username != null && Password != null)
             {
+
                 await login();
-
-
-                //await SecureStorage.Default.SetAsync("oauth_token", test);
-
-                // logind
-                /*
-                await Shell.Current.GoToAsync("//Home");
-                await Shell.Current.GoToAsync($"//{nameof(MainPage)}");
-                */
-
-                //await Navigation.PushAsync(new MainPage());
 
             }
             else
             {
 
-                //await DisplayAlert("UPS", "Udfyld venligst alle felterne", "OK");
+                LoginError = "Udfyld venligst alle felterne";
 
             }
-            
-           
+
         }
 
 
         private async Task<bool> login()
         {
-            
-            client = new HttpClient();
+
+            APIService api = new APIService();
+
 
             User loginUser = new User() {
                 email = Username,
                 password = Password
             };
 
-            using (var content = new StringContent(JsonConvert.SerializeObject(loginUser), Encoding.UTF8, "application/json"))
+            bool success = await Api.LoginAsync(loginUser);
+            if (success == true)
             {
-                HttpResponseMessage response = await client.PostAsync("https://vacapi.semeicardia.online/api/authenticate/app", content);
-                /*
-                if (response.StatusCode == System.Net.HttpStatusCode.Unauthorized)
-                {
-                    LoginError = "error 1";
+                // Set navigation to home setting
+                await Shell.Current.GoToAsync("//Home");
 
-                    return false;
-                }
-                */
-                if (!response.IsSuccessStatusCode)
-                {
-                    LoginError = "brugernavn eller password er forkert "; 
-                    return false;
-                }
+                // Navigate to mainpage
+                await Shell.Current.GoToAsync($"//{nameof(MainPage)}");
+                return true;
+            }
+            else
+            {
 
-                var jsonstring = await response.Content.ReadAsStringAsync();
-            
-                dynamic values = JsonConvert.DeserializeObject<dynamic>(jsonstring);
-
-                if (jsonstring != null)
-                {
-                    string test = values[1].token;
-                    //await settoken(values[1].token); 
-                    await SecureStorage.Default.SetAsync("oauth_token", test);
-                    
-                    await Shell.Current.GoToAsync("//Home");
-                    await Shell.Current.GoToAsync($"//{nameof(MainPage)}");
-                    
-                    return true;
-
-                }
-                else
-                {
-
-                    return false;
-                }
+                LoginError = "brugernavn eller password er forkert ";
+                return false;
             }
 
-            
+
         }
 
 

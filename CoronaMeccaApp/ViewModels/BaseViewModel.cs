@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CoronaMeccaApp.Services;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -10,6 +11,9 @@ namespace CoronaMeccaApp.ViewModels
 {
     public class BaseViewModel : INotifyPropertyChanged
     {
+
+        public IAPIService Api => DependencyService.Get<IAPIService>();
+
 
         bool isBusy;
         string title; 

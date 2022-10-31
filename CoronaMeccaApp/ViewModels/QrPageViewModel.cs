@@ -57,8 +57,7 @@ namespace CoronaMeccaApp.ViewModels
 
         private void addBtnClick(object sender)
         {
-            qrText = "tester2";
-
+             
             if (isadd == false)
             {
                 addBtnSource = "plus.png";

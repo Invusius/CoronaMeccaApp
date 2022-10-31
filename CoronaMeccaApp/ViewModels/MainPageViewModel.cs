@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CoronaMeccaApp.Models;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -16,36 +17,31 @@ namespace CoronaMeccaApp.ViewModels
         private string _CounterBtn;
         public string CounterBtn { get => _CounterBtn; set { _CounterBtn = value; OnPropertyChanged(); } }
 
+        private List<Zone> _zones;
+        public List<Zone> zones { get => _zones; set { _zones = value; OnPropertyChanged(); } }
 
         int count = 0;
 
-
-
-        public ObservableCollection<int> Test { get; }
-
-        public List<int> zones { get; set; }
 
         public MainPageViewModel()
         {
             onCounterClicked = new Command(OnCounterClicked);
 
-            
+            FillList(); 
+        }
+
+        private async void FillList()
+        {
+            CounterBtn = await SecureStorage.Default.GetAsync("oauth_token");
 
 
-            Test = new ObservableCollection<int>();
+            zones = await Api.ZoneListAsync();
 
-            zones = new List<int>();
-
-            test();
 
         }
 
         private void OnCounterClicked(object sender)
         {
-
-            Test.Add(1);
-
-            zones.Add(1);
 
             count++;
 
@@ -55,24 +51,6 @@ namespace CoronaMeccaApp.ViewModels
                 CounterBtn= $"Clicked {count} times";
 
             SemanticScreenReader.Announce(CounterBtn);
-        }
-
-        async void test()
-        {
-            CounterBtn = await SecureStorage.Default.GetAsync("oauth_token");
-
-            string tester = "";
-
-            tester = await SecureStorage.Default.GetAsync("oauth_token");
-
-            if (tester == null)
-            {
-                tester = "nope";
-            }
-
-            //testLable.Text = tester;
-
-
         }
 
     }

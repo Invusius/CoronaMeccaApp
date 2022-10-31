@@ -4,25 +4,13 @@
              x:Class="CoronaMeccaApp.MainPage">
 
     <ScrollView >
-        
+
         <VerticalStackLayout
             Spacing="25"
             Padding="30,0"
             VerticalOptions="Center">
 
-
-            <Label 
-                x:Name="testLable"
-                Text="test"
-                />
-            <Button
-                x:Name="CounterBtn"
-                Text="{Binding CounterBtn}"
-                SemanticProperties.Hint="Counts the number of times you click"
-                Command="{Binding onCounterClicked}"
-                HorizontalOptions="Center" />
-
-            <ListView ItemsSource="{Binding Test}"  >
+            <ListView ItemsSource="{Binding zones}"   >
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
@@ -36,13 +24,22 @@
                                     <ColumnDefinition Width="Auto" />
                                 </Grid.ColumnDefinitions>
                                 <Label 
-                                    Text="tester"/>
+                                    Text="{Binding name}"
+                                    />
+                                
                             </Grid>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
-                
             </ListView>
+            
+             <!-- delete this button -->
+            <Button
+                x:Name="CounterBtn"
+                Text="{Binding CounterBtn}"
+                SemanticProperties.Hint="Counts the number of times you click"
+                Command="{Binding onCounterClicked}"
+                HorizontalOptions="Center" />
 
         </VerticalStackLayout>
     </ScrollView>
