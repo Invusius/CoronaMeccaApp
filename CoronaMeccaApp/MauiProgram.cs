@@ -2,6 +2,7 @@
 using ZXing.Net.Maui.Controls;
 using CoronaMeccaApp.Services;
 using CoronaMeccaApp.ViewModels;
+using CoronaMeccaApp.Views;
 
 namespace CoronaMeccaApp;
 public static class MauiProgram
@@ -27,6 +28,8 @@ public static class MauiProgram
         builder.Services.AddSingleton<QrPageViewModel>();
         builder.Services.AddSingleton<KassePage>();
         builder.Services.AddSingleton<KassePageViewModel>();
+        builder.Services.AddSingleton<CreateBoxPage>();
+        builder.Services.AddSingleton<CreateBoxViewModel>();
 
         return builder.Build();
 	}

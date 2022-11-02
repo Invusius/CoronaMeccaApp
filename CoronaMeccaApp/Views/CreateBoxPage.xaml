@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CoronaMeccaApp.Views.CreateBoxPage"
+             Title="CreateBoxPage">
+    <VerticalStackLayout>
+        <Label 
+            Text="{Binding BoxNumber}"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+
+        <Label 
+            Text="ZONE"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" 
+            />
+        <Picker 
+            x:Name="ZonePicker"
+            Title="vælg en zone"
+            ItemsSource="{Binding zones}"
+            ItemDisplayBinding="{Binding name}"
+            SelectedItem="{Binding selectedZone}"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" 
+            />
+        <Label 
+            Text="PLADS"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" 
+            />
+        <Picker 
+            x:Name="PositionsPicker"
+            Title="vælg en plads"
+            
+            ItemsSource="{Binding Positions}"
+            ItemDisplayBinding="{Binding name}"
+            SelectedItem="{Binding selectedPosition}"
+            
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" 
+            
+            />
+        <Label 
+            Text="TYPE"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" 
+            />
+        <Picker 
+            x:Name="TypePicker"
+            Title="vælg en type"
+            ItemsSource="{Binding types}"
+            ItemDisplayBinding="{Binding name}"
+            SelectedItem="{Binding selectedType}"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" 
+            />
+        <Label 
+            Text="NAVN"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" 
+            />
+        <Entry 
+            Placeholder="Navn"
+            Text="{Binding BoxName}"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" 
+            />
+        <Label 
+            Text="BATCH"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" 
+            />
+        <Entry 
+            Placeholder="BatchNummer"
+            Text="{Binding BatchNumber}"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" 
+            />
+        <Button 
+            Text="OPRET"
+            Command="{Binding OpretBtn }"
+            />
+
+
+    </VerticalStackLayout>
+</ContentPage>

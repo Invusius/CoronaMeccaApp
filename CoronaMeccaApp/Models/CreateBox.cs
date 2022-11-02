@@ -6,12 +6,13 @@ using System.Threading.Tasks;
 
 namespace CoronaMeccaApp.Models
 {
-    public class Position
+    public class CreateBox
     {
-        public int id { get; set; }
+
+        public int position_id { get; set; }
+        public int type_id { get; set; }
         public string name { get; set; }
-        public int zone_id { get; set; }
-        public Zone zone { get; set; }
+        public string batch { get; set; }
 
 
     }

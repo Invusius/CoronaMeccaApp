@@ -1,4 +1,5 @@
 ﻿using AndroidX.Annotations;
+using CoronaMeccaApp.Views;
 //using CoronaMeccaApp.Views;
 using System;
 using System.Collections.Generic;
@@ -43,19 +44,11 @@ namespace CoronaMeccaApp.ViewModels
             }
             else
             {
-                //await Shell.Current.GoToAsync($"//{nameof(CreateBoxPage)}?name={sender.ToString()}");
+                await Shell.Current.GoToAsync($"//{nameof(CreateBoxPage)}?name={sender.ToString()}");
 
             }
 
-            /*
-            Dispatcher.Dispatch(() =>
-            {
-                // get barcode result e.Results[0].Value; 
-                qrlable.Text = e.Results[0].Value; 
-
-            }); 
-            */
-
+     
         }
 
         private void addBtnClick(object sender)

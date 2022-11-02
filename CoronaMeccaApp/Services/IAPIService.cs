@@ -18,6 +18,9 @@ namespace CoronaMeccaApp.Services
         Task<List<Position>> PositionsListAsync();
         Task<List<Types>> TyoesListAsync();
 
+        Task<bool> CreateBox(CreateBox bocreateBox);
+
+
 
     }
 }

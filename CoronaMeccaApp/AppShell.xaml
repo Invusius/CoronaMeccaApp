@@ -5,6 +5,7 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:CoronaMeccaApp"
+    xmlns:views="clr-namespace:CoronaMeccaApp.Views"
     >
 
     <TabBar Route="Login">
@@ -38,6 +39,11 @@
     <TabBar Route="KassePage">
         <ShellContent
             ContentTemplate="{DataTemplate local:KassePage}"
+            />
+    </TabBar>
+    <TabBar Route="CreateBoxPage">
+        <ShellContent
+            ContentTemplate="{DataTemplate views:CreateBoxPage}"
             />
     </TabBar>
     <!--

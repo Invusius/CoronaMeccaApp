@@ -1,4 +1,6 @@
-﻿namespace CoronaMeccaApp;
+﻿using CoronaMeccaApp.Views;
+
+namespace CoronaMeccaApp;
 
 public partial class AppShell : Shell
 {
@@ -10,6 +12,7 @@ public partial class AppShell : Shell
         Routing.RegisterRoute(nameof(MainPage), typeof(MainPage));
         Routing.RegisterRoute(nameof(QrPage), typeof(QrPage));
         Routing.RegisterRoute(nameof(KassePage), typeof(KassePage));
+        Routing.RegisterRoute(nameof(CreateBoxPage), typeof(CreateBoxPage));
 
 
     }

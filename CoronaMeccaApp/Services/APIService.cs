@@ -23,6 +23,39 @@ namespace CoronaMeccaApp.Services
 
         }
 
+        public async Task<bool> CreateBox(CreateBox createBox)
+        {
+            using (var content = new StringContent(JsonConvert.SerializeObject(createBox), Encoding.UTF8, "application/json"))
+            {
+                string token = await SecureStorage.Default.GetAsync("oauth_token");
+
+                client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", $"{token}");
+
+                HttpResponseMessage response = await client.PostAsync("https://vacapi.semeicardia.online/api/boxes", content);
+
+                if (!response.IsSuccessStatusCode)
+                {
+                    return false;
+                }
+
+                var jsonstring = await response.Content.ReadAsStringAsync();
+
+                dynamic values = JsonConvert.DeserializeObject<dynamic>(jsonstring);
+
+                if (jsonstring != null)
+                {
+                    
+                    return true;
+
+                }
+                else
+                {
+
+                    return false;
+                }
+            }
+        }
+
         public async Task<Box> GetboxAsync(int id)
         {
             try
