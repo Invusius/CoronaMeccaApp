@@ -23,6 +23,42 @@ namespace CoronaMeccaApp.Services
 
         }
 
+        public async Task<Box> GetboxAsync(int id)
+        {
+            try
+             {
+
+                string token = await SecureStorage.Default.GetAsync("oauth_token");
+                //client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", $"{token}");
+
+
+                HttpResponseMessage response = await client.GetAsync("https://vacapi.semeicardia.online/api/boxes/1");
+
+                response.EnsureSuccessStatusCode();
+                var jsonstring = await response.Content.ReadAsStringAsync();
+
+                Box box = JsonConvert.DeserializeObject<Box>(jsonstring);
+                if (box != null)
+                {
+                    return box;
+
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (HttpRequestException e)
+            {
+
+                Console.WriteLine("error" + e);
+                return null;
+
+            }
+
+        }
+    
+
         public async Task<bool> LoginAsync(User user)
         {
             using (var content = new StringContent(JsonConvert.SerializeObject(user), Encoding.UTF8, "application/json"))
@@ -60,7 +96,62 @@ namespace CoronaMeccaApp.Services
 
         }
 
+        public async Task<List<Position>> PositionsListAsync()
+        {
+            try
+            {
+
+                string token = await SecureStorage.Default.GetAsync("oauth_token");
+                client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", $"{token}");
+
+
+                HttpResponseMessage response = await client.GetAsync("https://vacapi.semeicardia.online/api/positions") ;
+
+                response.EnsureSuccessStatusCode();
+                var jsonstring = await response.Content.ReadAsStringAsync();
+
+                var positions = JsonConvert.DeserializeObject<IEnumerable<Position>>(jsonstring);
+
+                return positions.ToList();
+            }
+            catch (HttpRequestException e)
+            {
+
+                Console.WriteLine("error" + e);
+                return null;
+
+            }
+        }
+
+        public async Task<List<Types>> TyoesListAsync()
+        {
+            try
+            {
+
+                string token = await SecureStorage.Default.GetAsync("oauth_token");
+                client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", $"{token}");
+
+
+                HttpResponseMessage response = await client.GetAsync("https://vacapi.semeicardia.online/api/types");
+
+                response.EnsureSuccessStatusCode();
+                var jsonstring = await response.Content.ReadAsStringAsync();
+
+                var types = JsonConvert.DeserializeObject<IEnumerable<Types>>(jsonstring);
+
+                return types.ToList();
+            }
+            catch (HttpRequestException e)
+            {
+
+                Console.WriteLine("error" + e);
+                return null;
+
+            }
+        }
+
         public async Task<List<Zone>> ZoneListAsync()
+        
         {
             try
             {

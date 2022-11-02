@@ -23,7 +23,7 @@ namespace CoronaMeccaApp.ViewModels
         private string _LoginError;
         public string LoginError { get => _LoginError; set { _LoginError = value; OnPropertyChanged(); } }
 
-        HttpClient client; 
+       
 
         public LoginPageViewModel()
         {

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using AndroidX.Annotations;
+//using CoronaMeccaApp.Views;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -30,20 +32,21 @@ namespace CoronaMeccaApp.ViewModels
 
         bool isadd = false;
         
-        public void ScanComplete(object sender)
+        public async void ScanComplete(object sender)
         {
             
             if (isadd == false)
             {
-                qrText = "se info";
-                // send get request
+               
+                await Shell.Current.GoToAsync($"//{nameof(KassePage)}?name={sender.ToString()}");
+
             }
             else
             {
-                qrText = "add info";
-                // send post request 
+                //await Shell.Current.GoToAsync($"//{nameof(CreateBoxPage)}?name={sender.ToString()}");
+
             }
-            
+
             /*
             Dispatcher.Dispatch(() =>
             {

@@ -11,7 +11,12 @@ namespace CoronaMeccaApp.Services
     {
         Task<bool> LoginAsync(User user);
 
+
+        Task<Box> GetboxAsync(int id);
+
         Task<List<Zone>> ZoneListAsync();
+        Task<List<Position>> PositionsListAsync();
+        Task<List<Types>> TyoesListAsync();
 
 
     }

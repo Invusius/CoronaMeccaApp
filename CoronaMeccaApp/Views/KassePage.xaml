@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CoronaMeccaApp.KassePage"
+             Title="KassePage">
+    <VerticalStackLayout>
+        <Label 
+            Text="{Binding KasseNavn}"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+
+
+        <Label 
+            Text="ZONE"
+            />
+        <Picker 
+            x:Name="ZonePicker"
+            Title="{Binding CurrentZone}"
+            ItemsSource="{Binding zones}"
+            ItemDisplayBinding="{Binding name}"
+            SelectedItem="{Binding selectedZone}"
+            IsEnabled="{Binding Edit}"
+            />
+        <Label 
+            Text="PLADS"
+            />
+        <Picker 
+            x:Name="PositionsPicker"
+            Title="{Binding CurrentPosition}"
+            ItemsSource="{Binding Positions}"
+            ItemDisplayBinding="{Binding name}"
+            IsEnabled="{Binding Edit}"
+            
+            />
+        <Label 
+            Text="TYPE"
+            />
+        <Picker 
+            x:Name="TypePicker"
+            Title="{Binding CurrentType}"
+            ItemsSource="{Binding types}"
+            ItemDisplayBinding="{Binding name}"
+            IsEnabled="{Binding Edit}"
+            
+            />
+        <Label 
+            Text="LAGRINGS DATO"
+            />
+        <DatePicker 
+            Date="{Binding StartDate}"
+            IsEnabled="False"
+            />
+        <Label 
+            Text="UDLØBS DATO DATO"
+            />
+        <DatePicker 
+            Date="{Binding EndDate}"
+            IsEnabled="False"
+            />
+        <Button 
+            Text="Edit"
+            Command="{Binding editBtn}"
+            />
+        <Button 
+            Text="Save"
+            Command="{Binding saveBtn }"
+            IsVisible="{Binding Edit}"
+            />
+            
+
+    </VerticalStackLayout>
+</ContentPage>

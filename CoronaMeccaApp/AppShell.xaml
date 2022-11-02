@@ -33,6 +33,13 @@
         </Tab>
         
     </TabBar>
+
+
+    <TabBar Route="KassePage">
+        <ShellContent
+            ContentTemplate="{DataTemplate local:KassePage}"
+            />
+    </TabBar>
     <!--
     <ShellContent
         Title="loginPage"
