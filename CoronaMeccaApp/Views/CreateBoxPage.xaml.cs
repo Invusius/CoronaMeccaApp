@@ -10,4 +10,10 @@ public partial class CreateBoxPage : ContentPage
 
 		BindingContext = createBoxViewModel;
 	}
+
+	private void ZonePicker_SelectedIndexChanged(object sender, EventArgs e)
+	{
+		((CreateBoxViewModel)BindingContext).fillPositionPicker();
+
+    }
 }

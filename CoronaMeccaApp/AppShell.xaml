@@ -46,6 +46,11 @@
             ContentTemplate="{DataTemplate views:CreateBoxPage}"
             />
     </TabBar>
+    <TabBar Route="ZonePage">
+        <ShellContent
+            ContentTemplate="{DataTemplate views:ZonePage}"
+            />
+    </TabBar>
     <!--
     <ShellContent
         Title="loginPage"

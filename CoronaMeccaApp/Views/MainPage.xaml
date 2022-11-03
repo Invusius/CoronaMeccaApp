@@ -10,7 +10,53 @@
             Padding="30,0"
             VerticalOptions="Center">
 
-            <ListView ItemsSource="{Binding zones}"   >
+
+
+            <CollectionView  ItemsSource="{Binding zones}" SelectedItem="{Binding ZoneSelected}" SelectionMode="Single" SelectionChangedCommand="{Binding OnListBtnClick}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Padding="10">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                          
+                            <Label Grid.Column="1"
+                              Text="{Binding name}"
+                              FontAttributes="Bold" />
+                            
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                <!--
+            <ListView x:Name="listView" ItemsSource="{Binding zones}"  SelectedItem="{Binding ZoneSelected}" >
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
@@ -23,22 +69,49 @@
                                     <ColumnDefinition Width="Auto" />
                                     <ColumnDefinition Width="Auto" />
                                 </Grid.ColumnDefinitions>
-                                <Label 
+                                <Button 
                                     Text="{Binding name}"
+                                    Command="{Binding OnListBtnClick}"
                                     />
-                                
+
                             </Grid>
                         </ViewCell>
-                    </DataTemplate>
+                        
+                            
+                          </DataTemplate>
+                    
                 </ListView.ItemTemplate>
+                
             </ListView>
+            
+                        
+                                  
+                            
+                            <ViewCell>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <Button 
+                                    Text="{Binding name}"
+                                    Command="{Binding OnListBtnclick}"
+                                    CommandParameter="{Binding id}"
+                                    />
+                            </Grid>
+                            </ViewCell> 
+                -->
+                                  
             
              <!-- delete this button -->
             <Button
                 x:Name="CounterBtn"
                 Text="{Binding CounterBtn}"
                 SemanticProperties.Hint="Counts the number of times you click"
-                Command="{Binding onCounterClicked}"
                 HorizontalOptions="Center" />
 
         </VerticalStackLayout>

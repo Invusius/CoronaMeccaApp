@@ -45,6 +45,7 @@ namespace CoronaMeccaApp.ViewModels
         {
             fillPickers();
             OpretBtn = new Command(OpretBtnclick);
+            //fillPositions = new Command(fillPositionPicker); 
         }
 
         public void ApplyQueryAttributes(IDictionary<string, object> query)
@@ -55,8 +56,13 @@ namespace CoronaMeccaApp.ViewModels
         public async void fillPickers()
         {
             zones = await Api.ZoneListAsync();
-            Positions = await Api.PositionsListAsync();
             types = await Api.TyoesListAsync();
+
+        }
+        public async void fillPositionPicker()
+        {
+            selectedPosition = null; 
+            Positions = await Api.ZonePositionsListAsync(selectedZone.id);
 
         }
 
@@ -72,7 +78,6 @@ namespace CoronaMeccaApp.ViewModels
                 // error mesage
             }
         }
-
 
         private async Task<bool> createBox()
         {

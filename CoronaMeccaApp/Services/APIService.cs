@@ -65,7 +65,7 @@ namespace CoronaMeccaApp.Services
                 //client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", $"{token}");
 
 
-                HttpResponseMessage response = await client.GetAsync("https://vacapi.semeicardia.online/api/boxes/1");
+                HttpResponseMessage response = await client.GetAsync("https://vacapi.semeicardia.online/api/boxes/name/"+ id);
 
                 response.EnsureSuccessStatusCode();
                 var jsonstring = await response.Content.ReadAsStringAsync();
@@ -155,7 +155,32 @@ namespace CoronaMeccaApp.Services
 
             }
         }
+        public async Task<List<Position>> ZonePositionsListAsync(int id)
+        {
+            try
+            {
 
+                string token = await SecureStorage.Default.GetAsync("oauth_token");
+                client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", $"{token}");
+
+
+                HttpResponseMessage response = await client.GetAsync("https://vacapi.semeicardia.online/api/positions/zone/" + id);
+
+                response.EnsureSuccessStatusCode();
+                var jsonstring = await response.Content.ReadAsStringAsync();
+
+                var positions = JsonConvert.DeserializeObject<IEnumerable<Position>>(jsonstring);
+
+                return positions.ToList();
+            }
+            catch (HttpRequestException e)
+            {
+
+                Console.WriteLine("error" + e);
+                return null;
+
+            }
+        }
         public async Task<List<Types>> TyoesListAsync()
         {
             try

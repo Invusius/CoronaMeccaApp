@@ -66,14 +66,22 @@ namespace CoronaMeccaApp.ViewModels
         {
             Edit = false;
             box = await Api.GetboxAsync(Convert.ToInt32(query["name"]));
+            if (box != null)
+            {
 
-            KasseNavn = box.name;
-            CurrentZone = box.position.zone.name.ToString();
-            CurrentPosition = box.position.name.ToString();
-            CurrentType = box.type.name.ToString();
-            StartDate = box.created_at.ToString();
-            EndDate = box.expires_at.ToString();
+                KasseNavn = "Kasse: " + box.name;
+                CurrentZone = box.position.zone.name.ToString();
+                CurrentPosition = box.position.name.ToString();
+                CurrentType = box.type.name.ToString();
+                StartDate = box.created_at.ToString();
+                EndDate = box.expires_at.ToString();
 
+            }
+            else
+            {
+                //no box was found
+                KasseNavn = "Ingen kasse med det nummer"; 
+            }
         }
 
         public async void fillPickers()

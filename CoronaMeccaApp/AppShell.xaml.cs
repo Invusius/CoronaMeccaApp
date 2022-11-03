@@ -13,6 +13,7 @@ public partial class AppShell : Shell
         Routing.RegisterRoute(nameof(QrPage), typeof(QrPage));
         Routing.RegisterRoute(nameof(KassePage), typeof(KassePage));
         Routing.RegisterRoute(nameof(CreateBoxPage), typeof(CreateBoxPage));
+        Routing.RegisterRoute(nameof(ZonePage), typeof(ZonePage));
 
 
     }

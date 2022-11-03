@@ -16,10 +16,12 @@ namespace CoronaMeccaApp.Services
 
         Task<List<Zone>> ZoneListAsync();
         Task<List<Position>> PositionsListAsync();
+        Task<List<Position>> ZonePositionsListAsync(int id);
         Task<List<Types>> TyoesListAsync();
 
         Task<bool> CreateBox(CreateBox bocreateBox);
 
+        
 
 
     }

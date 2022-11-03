@@ -9,54 +9,65 @@
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
 
-
-        <Label 
-            Text="ZONE"
-            />
-        <Picker 
-            x:Name="ZonePicker"
-            Title="{Binding CurrentZone}"
-            ItemsSource="{Binding zones}"
-            ItemDisplayBinding="{Binding name}"
-            SelectedItem="{Binding selectedZone}"
-            IsEnabled="{Binding Edit}"
-            />
-        <Label 
-            Text="PLADS"
-            />
-        <Picker 
-            x:Name="PositionsPicker"
-            Title="{Binding CurrentPosition}"
-            ItemsSource="{Binding Positions}"
-            ItemDisplayBinding="{Binding name}"
-            IsEnabled="{Binding Edit}"
+        <StackLayout Margin="20"> 
             
-            />
-        <Label 
-            Text="TYPE"
-            />
-        <Picker 
-            x:Name="TypePicker"
-            Title="{Binding CurrentType}"
-            ItemsSource="{Binding types}"
-            ItemDisplayBinding="{Binding name}"
-            IsEnabled="{Binding Edit}"
+            <Label 
+                Text="ZONE"
+                />
+            <Picker 
+                x:Name="ZonePicker"
+                Title="{Binding CurrentZone}"
+                ItemsSource="{Binding zones}"
+                ItemDisplayBinding="{Binding name}"
+                SelectedItem="{Binding selectedZone}"
+                IsEnabled="{Binding Edit}"
+                />
+        </StackLayout>
+        <StackLayout Margin="20" > 
+            <Label 
+                Text="PLADS"
+                />
+            <Picker 
+                x:Name="PositionsPicker"
+                Title="{Binding CurrentPosition}"
+                ItemsSource="{Binding Positions}"
+                ItemDisplayBinding="{Binding name}"
+                IsEnabled="{Binding Edit}"
+                />
+        </StackLayout>
+        <StackLayout Margin="20">
             
-            />
-        <Label 
-            Text="LAGRINGS DATO"
-            />
-        <DatePicker 
-            Date="{Binding StartDate}"
-            IsEnabled="False"
-            />
-        <Label 
-            Text="UDLØBS DATO DATO"
-            />
-        <DatePicker 
-            Date="{Binding EndDate}"
-            IsEnabled="False"
-            />
+            <Label 
+                Text="TYPE"
+                />
+            <Picker 
+                x:Name="TypePicker"
+                Title="{Binding CurrentType}"
+                ItemsSource="{Binding types}"
+                ItemDisplayBinding="{Binding name}"
+                IsEnabled="{Binding Edit}"
+                />
+        </StackLayout>
+        <StackLayout Margin="20" > 
+            
+            <Label 
+                Text="LAGRINGS DATO"
+                />
+            <DatePicker 
+                Date="{Binding StartDate}"
+                IsEnabled="False"
+                />
+        </StackLayout>
+        <StackLayout Margin="20"> 
+            <Label 
+                Text="UDLØBS DATO DATO"
+                />
+            <DatePicker 
+                Date="{Binding EndDate}"
+                IsEnabled="False"
+                />
+            
+        </StackLayout>
         <Button 
             Text="Edit"
             Command="{Binding editBtn}"
