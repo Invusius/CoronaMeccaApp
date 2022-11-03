@@ -4,9 +4,22 @@
              x:Class="CoronaMeccaApp.Views.ZonePage"
              Title="ZonePage">
     <VerticalStackLayout>
-        <Label 
-            Text="{Binding ZoneName}"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+        <StackLayout> 
+            <Label 
+                Text="{Binding ZoneName}"
+                VerticalOptions="Center" 
+                HorizontalOptions="Center" />
+        </StackLayout>
+        <StackLayout Margin="40">
+            <Label 
+                Text="Temperatur"
+                />
+            <Label 
+                Text="Luftfugtighed"
+                />
+        </StackLayout>
+        <StackLayout> 
+           
+        </StackLayout>
     </VerticalStackLayout>
 </ContentPage>
