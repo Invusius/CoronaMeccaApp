@@ -26,8 +26,8 @@ public static class MauiProgram
 		builder.Services.AddSingleton<MainPageViewModel>();
         builder.Services.AddSingleton<QrPage>();
         builder.Services.AddSingleton<QrPageViewModel>();
-        builder.Services.AddSingleton<KassePage>();
-        builder.Services.AddSingleton<KassePageViewModel>();
+        builder.Services.AddSingleton<BoxPage>();
+        builder.Services.AddSingleton<BoxPageViewModel>();
         builder.Services.AddSingleton<CreateBoxPage>();
         builder.Services.AddSingleton<CreateBoxViewModel>(); 
 		builder.Services.AddSingleton<ZonePage>();

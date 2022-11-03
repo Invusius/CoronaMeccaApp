@@ -22,6 +22,10 @@
             HorizontalOptions="Center" 
             
             />
+        <Label 
+            Text="{Binding qrErrorText}"
+            TextColor="Red"
+            />
         <ImageButton 
             x:Name="addBTN"
             Source="{Binding addBtnSource}"
@@ -33,10 +37,7 @@
             
             />
         
-        <Button 
-            Text="turn camera on "
-            Clicked="Button_Clicked"
-            />
+        
 
     </VerticalStackLayout>
 </ContentPage>

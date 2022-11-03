@@ -1,15 +1,25 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="CoronaMeccaApp.KassePage"
-             Title="KassePage">
+             x:Class="CoronaMeccaApp.BoxPage"
+             Title="BoxPage">
+    
     <VerticalStackLayout>
-        <Label 
-            Text="{Binding KasseNavn}"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+            
+            <Button 
+                Text="back"
+                Command="{Binding backBtn}"
+                WidthRequest="80"
+                HorizontalOptions="Start"
 
-        <StackLayout Margin="20"> 
+                />
+            <Label 
+                Text="{Binding KasseNavn}"
+                VerticalOptions="Center" 
+                HorizontalOptions="Center"
+                Margin="15"/>
+
+        <StackLayout Margin="15"> 
             
             <Label 
                 Text="ZONE"
@@ -23,7 +33,7 @@
                 IsEnabled="{Binding Edit}"
                 />
         </StackLayout>
-        <StackLayout Margin="20" > 
+        <StackLayout Margin="15" > 
             <Label 
                 Text="PLADS"
                 />
@@ -35,7 +45,7 @@
                 IsEnabled="{Binding Edit}"
                 />
         </StackLayout>
-        <StackLayout Margin="20">
+        <StackLayout Margin="15">
             
             <Label 
                 Text="TYPE"
@@ -48,7 +58,7 @@
                 IsEnabled="{Binding Edit}"
                 />
         </StackLayout>
-        <StackLayout Margin="20" > 
+        <StackLayout Margin="15" > 
             
             <Label 
                 Text="LAGRINGS DATO"
@@ -58,7 +68,7 @@
                 IsEnabled="False"
                 />
         </StackLayout>
-        <StackLayout Margin="20"> 
+        <StackLayout Margin="15"> 
             <Label 
                 Text="UDLØBS DATO DATO"
                 />

@@ -36,9 +36,9 @@
     </TabBar>
 
 
-    <TabBar Route="KassePage">
+    <TabBar Route="BoxPage">
         <ShellContent
-            ContentTemplate="{DataTemplate local:KassePage}"
+            ContentTemplate="{DataTemplate local:BoxPage}"
             />
     </TabBar>
     <TabBar Route="CreateBoxPage">

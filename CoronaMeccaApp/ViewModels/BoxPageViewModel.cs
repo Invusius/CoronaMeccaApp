@@ -1,4 +1,5 @@
-﻿using CoronaMeccaApp.Models;
+﻿using AndroidX.Activity;
+using CoronaMeccaApp.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,11 +8,12 @@ using System.Threading.Tasks;
 
 namespace CoronaMeccaApp.ViewModels
 {
-    public class KassePageViewModel : BaseViewModel , IQueryAttributable
+    public class BoxPageViewModel : BaseViewModel , IQueryAttributable
     {
         public Command editBtn { get; }
         public Command saveBtn { get; }
-
+        public Command backBtn { get; }
+        
 
 
         private string _KasseNavn;
@@ -43,21 +45,20 @@ namespace CoronaMeccaApp.ViewModels
 
         public bool _Edit { get; set; }
         public bool Edit { get => _Edit; set { _Edit = value; OnPropertyChanged(); } }
-        /*
-        public Color _editBtnColor { get; set; }
-        public Color editBtnColor { get => _editBtnColor; set { _editBtnColor = value; OnPropertyChanged(); } }
-        */
+   
 
         private Zone _selectedZone;
         public Zone selectedZone { get => _selectedZone; set { _selectedZone = value; OnPropertyChanged(); } }
 
-        public KassePageViewModel()
+        public BoxPageViewModel()
         {
             
             fillPickers();
 
             editBtn = new Command(editClick);
             saveBtn = new Command(onSave);
+            backBtn = new Command(onBack);
+
 
         }
         public Box box; 
@@ -66,22 +67,14 @@ namespace CoronaMeccaApp.ViewModels
         {
             Edit = false;
             box = await Api.GetboxAsync(Convert.ToInt32(query["name"]));
-            if (box != null)
-            {
+           
+            KasseNavn = "Kasse: " + box.name;
+            CurrentZone = box.position.zone.name.ToString();
+            CurrentPosition = box.position.name.ToString();
+            CurrentType = box.type.name.ToString();
+            StartDate = box.created_at.ToString();
+            EndDate = box.expires_at.ToString();
 
-                KasseNavn = "Kasse: " + box.name;
-                CurrentZone = box.position.zone.name.ToString();
-                CurrentPosition = box.position.name.ToString();
-                CurrentType = box.type.name.ToString();
-                StartDate = box.created_at.ToString();
-                EndDate = box.expires_at.ToString();
-
-            }
-            else
-            {
-                //no box was found
-                KasseNavn = "Ingen kasse med det nummer"; 
-            }
         }
 
         public async void fillPickers()
@@ -92,27 +85,46 @@ namespace CoronaMeccaApp.ViewModels
 
         }
 
+        public void emptyPickers()
+        {
+            zones = null;
+            Positions = null;
+            types = null;
+
+
+            KasseNavn = null;
+            CurrentZone = null; 
+            CurrentPosition = null;
+            CurrentType = null;
+            StartDate = null;    
+            EndDate = null;
+
+        }
+
         public void editClick()
         {
             if (Edit == false)
             {
                 Edit = true;
 
-
             }
             else
             {
                 Edit = false;
-
             }
 
         }
         public void onSave()
         {
-            // update bot 
+            // update box
             
 
             CurrentZone = selectedZone.name; 
+        }
+        private async void onBack()
+        {
+            emptyPickers(); 
+            await Shell.Current.GoToAsync($"/{nameof(QrPage)}");
         }
     }
 }

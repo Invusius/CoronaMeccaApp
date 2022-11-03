@@ -31,11 +31,7 @@ public partial class QrPage : ContentPage
 
     }
 
-    private void Button_Clicked(object sender, EventArgs e)
-    {
-        Camera.Open();
-
-    }
+ 
 
  
 }

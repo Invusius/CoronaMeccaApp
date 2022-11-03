@@ -1,4 +1,5 @@
 ﻿using AndroidX.Annotations;
+using CoronaMeccaApp.Models;
 using CoronaMeccaApp.Views;
 //using CoronaMeccaApp.Views;
 using System;
@@ -21,6 +22,9 @@ namespace CoronaMeccaApp.ViewModels
         private string _addBtnSource;
         public string addBtnSource { get => _addBtnSource; set { _addBtnSource = value; OnPropertyChanged(); } }
 
+        private string _qrErrorText;
+        public string qrErrorText { get => _qrErrorText; set { _qrErrorText = value; OnPropertyChanged(); } }
+
 
         public QrPageViewModel()
         {
@@ -32,19 +36,39 @@ namespace CoronaMeccaApp.ViewModels
         }
 
         bool isadd = false;
-        
+        private Box box; 
         public async void ScanComplete(object sender)
         {
             
+            box = await Api.GetboxAsync(Convert.ToInt32(sender.ToString())); 
             if (isadd == false)
             {
-               
-                await Shell.Current.GoToAsync($"//{nameof(KassePage)}?name={sender.ToString()}");
+                
+                if(box != null)
+                {
+                    qrErrorText = ""; 
+                    await Shell.Current.GoToAsync($"//{nameof(BoxPage)}?name={sender.ToString()}");
 
+                }
+                else
+                {
+                    qrErrorText = "Kassen findes Ikke"; 
+                }
+               
             }
             else
             {
-                await Shell.Current.GoToAsync($"//{nameof(CreateBoxPage)}?name={sender.ToString()}");
+                if(box == null)
+                {
+                    qrErrorText = "";
+
+                    await Shell.Current.GoToAsync($"//{nameof(CreateBoxPage)}?name={sender.ToString()}");
+
+                }
+                else
+                {
+                    qrErrorText = "Kassen eksisterer alerede "; 
+                }
 
             }
 
