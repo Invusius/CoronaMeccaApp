@@ -16,9 +16,6 @@ namespace CoronaMeccaApp.ViewModels
         private string _BoxNumber;
         public string BoxNumber { get => _BoxNumber; set { _BoxNumber = value; OnPropertyChanged(); } }
 
-        private string _BoxName;
-        public string BoxName { get => _BoxName; set { _BoxName = value; OnPropertyChanged(); } }
-
         private string _BatchNumber;
         public string BatchNumber { get => _BatchNumber; set { _BatchNumber = value; OnPropertyChanged(); } }
         
@@ -68,7 +65,7 @@ namespace CoronaMeccaApp.ViewModels
 
         private async void OpretBtnclick()
         {
-            if (BoxName != null && selectedPosition != null && selectedType != null && BatchNumber != null)
+            if ( selectedPosition != null && selectedType != null && BatchNumber != null)
             {
                 await createBox(); 
 
@@ -84,8 +81,8 @@ namespace CoronaMeccaApp.ViewModels
 
                 CreateBox createBox = new CreateBox()
                 {
-                    position_id = selectedPosition.id,
-                    type_id = selectedType.id,
+                    position_id = selectedPosition.id.ToString(),
+                    type_id = selectedType.id.ToString(),
                     name = BoxNumber,
                     batch = BatchNumber
                 }; 
@@ -93,7 +90,6 @@ namespace CoronaMeccaApp.ViewModels
                 bool success = await Api.CreateBox(createBox);
                 if (success == true)
                 {
-                    
             
                     return true;
                 }

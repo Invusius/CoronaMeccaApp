@@ -37,6 +37,9 @@ namespace CoronaMeccaApp.ViewModels
         private List<Types> _types;
         public List<Types> types { get => _types; set { _types = value; OnPropertyChanged(); } }
 
+        private string _Batch;
+        public string Batch { get => _Batch; set { _Batch = value; OnPropertyChanged(); } }
+
         private string _StartDate;
         public string StartDate { get => _StartDate; set { _StartDate = value; OnPropertyChanged(); } }
 
@@ -47,8 +50,15 @@ namespace CoronaMeccaApp.ViewModels
         public bool Edit { get => _Edit; set { _Edit = value; OnPropertyChanged(); } }
    
 
-        private Zone _selectedZone;
-        public Zone selectedZone { get => _selectedZone; set { _selectedZone = value; OnPropertyChanged(); } }
+        private Zone _SelectedZone;
+        public Zone SelectedZone { get => _SelectedZone; set { _SelectedZone = value; OnPropertyChanged(); } }
+
+        private Position _SelectedPosition;
+        public Position SelectedPosition { get => _SelectedPosition; set { _SelectedPosition = value; OnPropertyChanged(); } }
+
+        private Types _SelectedType;
+        public Types SelectedType { get => _SelectedType; set { _SelectedType = value; OnPropertyChanged(); } }
+
 
         public BoxPageViewModel()
         {
@@ -61,8 +71,8 @@ namespace CoronaMeccaApp.ViewModels
 
 
         }
-        public Box box; 
-
+        public Box box;
+        private int CurrentZoneId; 
         public async void ApplyQueryAttributes(IDictionary<string, object> query)
         {
             Edit = false;
@@ -70,8 +80,10 @@ namespace CoronaMeccaApp.ViewModels
            
             KasseNavn = "Kasse: " + box.name;
             CurrentZone = box.position.zone.name.ToString();
+            CurrentZoneId = box.position.zone.id; 
             CurrentPosition = box.position.name.ToString();
             CurrentType = box.type.name.ToString();
+            Batch = box.batch; 
             StartDate = box.created_at.ToString();
             EndDate = box.expires_at.ToString();
 
@@ -80,8 +92,14 @@ namespace CoronaMeccaApp.ViewModels
         public async void fillPickers()
         {
             zones = await Api.ZoneListAsync();
-            Positions = await Api.PositionsListAsync();
+            Positions = await Api.ZonePositionsListAsync(CurrentZoneId);
             types = await Api.TyoesListAsync();
+
+        }
+
+        public async void fillPositions()
+        {
+            Positions = await Api.ZonePositionsListAsync(SelectedZone.id);
 
         }
 
@@ -114,12 +132,34 @@ namespace CoronaMeccaApp.ViewModels
             }
 
         }
-        public void onSave()
+        public async void onSave()
         {
             // update box
-            
+            CreateBox UpdateBox = new CreateBox()
+            {
+                name = null,
+                batch = null,
+                position_id = null,
+                type_id = null
+                
+            }; 
+          
+            if (SelectedPosition != null)
+            {
+                UpdateBox.position_id = SelectedPosition.id.ToString(); 
+            }
+            if (SelectedType != null)
+            {
+                UpdateBox.type_id = SelectedType.id.ToString();
+            }
+            UpdateBox.batch = Batch;
 
-            CurrentZone = selectedZone.name; 
+            bool success = await Api.UpdateBox(box.id, UpdateBox);
+            if (success)
+            {
+
+            }
+            
         }
         private async void onBack()
         {

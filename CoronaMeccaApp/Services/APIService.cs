@@ -40,7 +40,7 @@ namespace CoronaMeccaApp.Services
 
                 var jsonstring = await response.Content.ReadAsStringAsync();
 
-                dynamic values = JsonConvert.DeserializeObject<dynamic>(jsonstring);
+                //dynamic values = JsonConvert.DeserializeObject<dynamic>(jsonstring);
 
                 if (jsonstring != null)
                 {
@@ -235,6 +235,39 @@ namespace CoronaMeccaApp.Services
 
             }
 
+        }
+
+        public async Task<bool> UpdateBox(int id , CreateBox UpdateBox)
+        {
+            using (var content = new StringContent(JsonConvert.SerializeObject(UpdateBox), Encoding.UTF8, "application/json"))
+            {
+                string token = await SecureStorage.Default.GetAsync("oauth_token");
+
+                client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", $"{token}");
+
+                HttpResponseMessage response = await client.PutAsync("https://vacapi.semeicardia.online/api/boxes/" + id, content);
+
+                if (!response.IsSuccessStatusCode)
+                {
+                    return false;
+                }
+
+                var jsonstring = await response.Content.ReadAsStringAsync();
+
+                //dynamic values = JsonConvert.DeserializeObject<dynamic>(jsonstring);
+
+                if (jsonstring != null)
+                {
+
+                    return true;
+
+                }
+                else
+                {
+
+                    return false;
+                }
+            }
         }
     }
 }

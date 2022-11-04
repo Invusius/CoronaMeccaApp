@@ -17,9 +17,9 @@
                 Text="{Binding KasseNavn}"
                 VerticalOptions="Center" 
                 HorizontalOptions="Center"
-                Margin="15"/>
+                Margin="10"/>
 
-        <StackLayout Margin="15"> 
+        <StackLayout Margin="10"> 
             
             <Label 
                 Text="ZONE"
@@ -29,11 +29,12 @@
                 Title="{Binding CurrentZone}"
                 ItemsSource="{Binding zones}"
                 ItemDisplayBinding="{Binding name}"
-                SelectedItem="{Binding selectedZone}"
+                SelectedItem="{Binding SelectedZone}"
+                SelectedIndexChanged="ZonePicker_SelectedIndexChanged"
                 IsEnabled="{Binding Edit}"
                 />
         </StackLayout>
-        <StackLayout Margin="15" > 
+        <StackLayout Margin="10" > 
             <Label 
                 Text="PLADS"
                 />
@@ -42,10 +43,11 @@
                 Title="{Binding CurrentPosition}"
                 ItemsSource="{Binding Positions}"
                 ItemDisplayBinding="{Binding name}"
+                SelectedItem="{Binding SelectedPosition}"
                 IsEnabled="{Binding Edit}"
                 />
         </StackLayout>
-        <StackLayout Margin="15">
+        <StackLayout Margin="10">
             
             <Label 
                 Text="TYPE"
@@ -55,10 +57,22 @@
                 Title="{Binding CurrentType}"
                 ItemsSource="{Binding types}"
                 ItemDisplayBinding="{Binding name}"
+                SelectedItem="{Binding SelectedType}"
+                
                 IsEnabled="{Binding Edit}"
                 />
         </StackLayout>
-        <StackLayout Margin="15" > 
+        <StackLayout Margin="10" >
+
+            <Label 
+                Text="BATCH"
+                />
+            <Entry 
+                Text="{Binding Batch}"
+                IsEnabled="{Binding Edit}"
+                />
+        </StackLayout>
+        <StackLayout Margin="10" > 
             
             <Label 
                 Text="LAGRINGS DATO"
@@ -68,7 +82,7 @@
                 IsEnabled="False"
                 />
         </StackLayout>
-        <StackLayout Margin="15"> 
+        <StackLayout Margin="10"> 
             <Label 
                 Text="UDLØBS DATO DATO"
                 />

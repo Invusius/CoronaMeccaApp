@@ -4,6 +4,13 @@
              x:Class="CoronaMeccaApp.Views.ZonePage"
              Title="ZonePage">
     <VerticalStackLayout>
+        <Button 
+                Text="back"
+                Command="{Binding backBtn}"
+                WidthRequest="80"
+                VerticalOptions="Start"
+                HorizontalOptions="Start"
+                />
         <StackLayout> 
             <Label 
                 Text="{Binding ZoneName}"

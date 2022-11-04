@@ -4,6 +4,13 @@
              x:Class="CoronaMeccaApp.Views.CreateBoxPage"
              Title="CreateBoxPage">
     <VerticalStackLayout>
+        <Button 
+                Text="back"
+                Command="{Binding backBtn}"
+                WidthRequest="80"
+                HorizontalOptions="Start"
+
+                />
         <Label 
             Text="{Binding BoxNumber}"
             VerticalOptions="Center" 
@@ -46,8 +53,8 @@
             
             />
         </StackLayout>
-        <StackLayout Margin="20" > 
-            
+        <StackLayout Margin="20" >
+
             <Label 
                 Text="TYPE"
                 VerticalOptions="Center" 
@@ -62,20 +69,6 @@
                 VerticalOptions="Center" 
                 HorizontalOptions="Center" 
                 />
-        </StackLayout>
-        <StackLayout Margin="20">
-            <Label 
-                Text="NAVN"
-                VerticalOptions="Center" 
-                HorizontalOptions="Center" 
-                />
-            <Entry 
-                Placeholder="Navn"
-                Text="{Binding BoxName}"
-                VerticalOptions="Center" 
-                HorizontalOptions="Center" 
-                />
-            
         </StackLayout>
         <StackLayout Margin="20" > 
             <Label 

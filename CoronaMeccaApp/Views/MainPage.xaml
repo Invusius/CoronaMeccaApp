@@ -5,34 +5,42 @@
 
     <ScrollView >
 
-        <VerticalStackLayout
-            Spacing="25"
-            Padding="30,0"
-            VerticalOptions="Center">
+        <VerticalStackLayout>
+                <Button 
+                Text="Log ud"
+                Command="{Binding backBtn}"
+                WidthRequest="80"
+                VerticalOptions="Start"
+                HorizontalOptions="Start"
+                />
 
-
-
-            <CollectionView  ItemsSource="{Binding zones}" SelectedItem="{Binding ZoneSelected}" SelectionMode="Single" SelectionChangedCommand="{Binding OnListBtnClick}">
-                <CollectionView.ItemTemplate>
-                    <DataTemplate>
-                        <Grid Padding="10">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto" />
-                                <RowDefinition Height="Auto" />
-                            </Grid.RowDefinitions>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto" />
-                                <ColumnDefinition Width="Auto" />
-                            </Grid.ColumnDefinitions>
+            <StackLayout 
+                Padding="100"
+                HorizontalOptions="Center"
+                VerticalOptions="Center">
+                
+                <CollectionView  ItemsSource="{Binding zones}" SelectedItem="{Binding ZoneSelected}" SelectionMode="Single" SelectionChangedCommand="{Binding OnListBtnClick}">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Padding="10">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
                           
-                            <Label Grid.Column="1"
-                              Text="{Binding name}"
-                              FontAttributes="Bold" />
+                                <Label Grid.Column="1"
+                                  Text="{Binding name}"
+                                  FontAttributes="Bold" />
                             
-                        </Grid>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </StackLayout>
 
 
 

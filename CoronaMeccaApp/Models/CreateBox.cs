@@ -9,8 +9,8 @@ namespace CoronaMeccaApp.Models
     public class CreateBox
     {
 
-        public int position_id { get; set; }
-        public int type_id { get; set; }
+        public string position_id { get; set; }
+        public string type_id { get; set; }
         public string name { get; set; }
         public string batch { get; set; }
 

@@ -11,4 +11,10 @@ public partial class BoxPage : ContentPage
 		BindingContext = boxPageViewModel; 
 
     }
+
+	private void ZonePicker_SelectedIndexChanged(object sender, EventArgs e)
+	{
+        ((BoxPageViewModel)BindingContext).fillPositions();
+
+    }
 }
