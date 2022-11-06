@@ -46,7 +46,10 @@ namespace CoronaMeccaApp.ViewModels
                 
                 if(box != null)
                 {
-                    qrErrorText = ""; 
+                    qrErrorText = "";
+                    //back button test 
+                    
+
                     await Shell.Current.GoToAsync($"//{nameof(BoxPage)}?name={sender.ToString()}");
 
                 }

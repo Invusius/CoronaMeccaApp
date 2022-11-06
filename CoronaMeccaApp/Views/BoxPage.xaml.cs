@@ -9,6 +9,7 @@ public partial class BoxPage : ContentPage
 		InitializeComponent();
 
 		BindingContext = boxPageViewModel; 
+		
 
     }
 

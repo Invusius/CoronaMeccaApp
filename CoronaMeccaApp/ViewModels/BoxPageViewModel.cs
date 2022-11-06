@@ -163,7 +163,8 @@ namespace CoronaMeccaApp.ViewModels
         }
         private async void onBack()
         {
-            emptyPickers(); 
+            emptyPickers();
+            await Shell.Current.GoToAsync("//Home");
             await Shell.Current.GoToAsync($"/{nameof(QrPage)}");
         }
     }

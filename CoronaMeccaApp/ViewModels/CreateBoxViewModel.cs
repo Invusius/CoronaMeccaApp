@@ -10,7 +10,7 @@ namespace CoronaMeccaApp.ViewModels
 {
     public class CreateBoxViewModel : BaseViewModel , IQueryAttributable
     {
-
+        public Command backBtn { get; }
         public Command OpretBtn { get; } 
 
         private string _BoxNumber;
@@ -42,6 +42,7 @@ namespace CoronaMeccaApp.ViewModels
         {
             fillPickers();
             OpretBtn = new Command(OpretBtnclick);
+            backBtn = new Command(onBack); 
             //fillPositions = new Command(fillPositionPicker); 
         }
 
@@ -100,8 +101,10 @@ namespace CoronaMeccaApp.ViewModels
            
 
         }
-
-
+        private async void onBack()
+        {
+            await Shell.Current.GoToAsync($"/{nameof(QrPage)}");
+        }
 
     }
 }
