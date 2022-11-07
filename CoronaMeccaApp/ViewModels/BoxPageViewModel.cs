@@ -22,6 +22,9 @@ namespace CoronaMeccaApp.ViewModels
         private string _CurrentZone;
         public string CurrentZone { get => _CurrentZone; set { _CurrentZone = value; OnPropertyChanged(); } }
 
+        private string _EditBtnText;
+        public string EditBtnText { get => _EditBtnText; set { _EditBtnText = value; OnPropertyChanged(); } }
+
         private List<Zone> _zones;
         public List<Zone> zones { get => _zones; set { _zones = value; OnPropertyChanged(); } }
 
@@ -75,6 +78,7 @@ namespace CoronaMeccaApp.ViewModels
         private int CurrentZoneId; 
         public async void ApplyQueryAttributes(IDictionary<string, object> query)
         {
+            EditBtnText = "Edit"; 
             Edit = false;
             box = await Api.GetboxAsync(Convert.ToInt32(query["name"]));
            
@@ -99,7 +103,9 @@ namespace CoronaMeccaApp.ViewModels
 
         public async void fillPositions()
         {
+          
             Positions = await Api.ZonePositionsListAsync(SelectedZone.id);
+            
 
         }
 
@@ -124,11 +130,18 @@ namespace CoronaMeccaApp.ViewModels
             if (Edit == false)
             {
                 Edit = true;
+                EditBtnText = "Cancel"; 
 
             }
             else
             {
                 Edit = false;
+                EditBtnText = "Edit";
+                SelectedPosition = null;
+                SelectedType = null;
+                SelectedZone = box.position.zone;
+                Batch = box.batch;
+
             }
 
         }
@@ -157,9 +170,12 @@ namespace CoronaMeccaApp.ViewModels
             bool success = await Api.UpdateBox(box.id, UpdateBox);
             if (success)
             {
+                Edit = false;
+                EditBtnText = "Edit";
+
 
             }
-            
+
         }
         private async void onBack()
         {

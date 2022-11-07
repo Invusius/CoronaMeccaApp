@@ -14,6 +14,7 @@ namespace CoronaMeccaApp.ViewModels
 {
     public class MainPageViewModel : BaseViewModel , INotifyPropertyChanged
     {
+        public Command OnLOgoutBtn { get; }
 
         public Command OnListBtnClick { get; }
 
@@ -29,7 +30,8 @@ namespace CoronaMeccaApp.ViewModels
 
         public MainPageViewModel()
         {
-            OnListBtnClick = new Command(listBtnClick); 
+            OnListBtnClick = new Command(listBtnClick);
+            OnLOgoutBtn = new Command(Logout); 
 
             FillList();
         }
@@ -48,9 +50,18 @@ namespace CoronaMeccaApp.ViewModels
 
             await Shell.Current.GoToAsync($"//{nameof(ZonePage)}?name={ZoneSelected.id.ToString()}");
 
+        }
+        
+        private async void Logout()
+        {
+            // Set navigation to home setting
+            await Shell.Current.GoToAsync("//Login");
+
+            // Navigate to mainpage
+            await Shell.Current.GoToAsync($"/{nameof(LoginPage)}");
+            SecureStorage.Default.Remove("oauth_token");
 
         }
-
 
 
     }

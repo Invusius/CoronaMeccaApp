@@ -93,7 +93,7 @@
             
         </StackLayout>
         <Button 
-            Text="Edit"
+            Text="{Binding EditBtnText}"
             Command="{Binding editBtn}"
             />
         <Button 
