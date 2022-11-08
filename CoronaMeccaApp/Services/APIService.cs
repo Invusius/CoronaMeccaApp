@@ -62,8 +62,8 @@ namespace CoronaMeccaApp.Services
              {
 
                 string token = await SecureStorage.Default.GetAsync("oauth_token");
-                //client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", $"{token}");
 
+                //client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", $"{token}");
 
                 HttpResponseMessage response = await client.GetAsync("https://vacapi.semeicardia.online/api/boxes/name/"+ id);
 
