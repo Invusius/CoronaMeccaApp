@@ -1,4 +1,5 @@
 using Android.Hardware;
+using Android.Hardware.Camera2;
 using CoronaMeccaApp.ViewModels;
 
 namespace CoronaMeccaApp;
@@ -12,11 +13,10 @@ public partial class QrPage : ContentPage
 
     }
 
-    private void CameraBarcodeReaderView_BarcodesDetected(object sender, ZXing.Net.Maui.BarcodeDetectionEventArgs e)
+    private async void CameraBarcodeReaderView_BarcodesDetected(object sender, ZXing.Net.Maui.BarcodeDetectionEventArgs e)
     {
 
-        ((QrPageViewModel)BindingContext).ScanComplete(e.Results[0].Value);
-
+        await ((QrPageViewModel)BindingContext).ScanComplete(e.Results[0].Value);
 
 
     }
@@ -25,10 +25,8 @@ public partial class QrPage : ContentPage
     protected override async void OnAppearing()
     {
         base.OnAppearing();
-
-        Camera.Open();
-
-
+        // Camera.Open();
+        
     }
 
  

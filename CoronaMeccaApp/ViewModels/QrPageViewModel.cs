@@ -1,6 +1,7 @@
 ﻿using AndroidX.Annotations;
 using CoronaMeccaApp.Models;
 using CoronaMeccaApp.Views;
+using Java.Lang;
 //using CoronaMeccaApp.Views;
 using System;
 using System.Collections.Generic;
@@ -37,45 +38,47 @@ namespace CoronaMeccaApp.ViewModels
 
         bool isadd = false;
         private Box box; 
-        public async void ScanComplete(object sender)
+        public async Task<bool> ScanComplete(object sender)
         {
-            
-            box = await Api.GetboxAsync(Convert.ToInt32(sender.ToString())); 
-            if (isadd == false)
+            if(int.TryParse(sender.ToString(), out int value) )
             {
-                
-                if(box != null)
+                box = await Api.GetboxAsync(Convert.ToInt32(sender.ToString())); 
+                if (isadd == false)
                 {
-                    qrErrorText = "";
-                    //back button test 
+                
+                    if(box != null)
+                    {
+                        qrErrorText = "";
+                        //back button test 
                     
 
-                    await Shell.Current.GoToAsync($"//{nameof(BoxPage)}?name={sender.ToString()}");
+                        await Shell.Current.GoToAsync($"//{nameof(BoxPage)}?name={sender.ToString()}");
 
-                }
-                else
-                {
-                    qrErrorText = "Kassen findes Ikke"; 
-                }
+                    }
+                    else
+                    {
+                        qrErrorText = "Kassen findes Ikke"; 
+                    }
                
-            }
-            else
-            {
-                if(box == null)
-                {
-                    qrErrorText = "";
-
-                    await Shell.Current.GoToAsync($"//{nameof(CreateBoxPage)}?name={sender.ToString()}");
-
                 }
                 else
                 {
-                    qrErrorText = "Kassen eksisterer alerede "; 
-                }
+                    if(box == null)
+                    {
+                        qrErrorText = "";
 
+                        await Shell.Current.GoToAsync($"//{nameof(CreateBoxPage)}?name={sender.ToString()}");
+
+                    }
+                    else
+                    {
+                        qrErrorText = "Kassen eksisterer alerede "; 
+                    }
+
+                }
             }
 
-     
+            return true; 
         }
 
         private void addBtnClick(object sender)
