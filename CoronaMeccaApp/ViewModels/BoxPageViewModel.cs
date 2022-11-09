@@ -78,18 +78,21 @@ namespace CoronaMeccaApp.ViewModels
         private int CurrentZoneId; 
         public async void ApplyQueryAttributes(IDictionary<string, object> query)
         {
-            EditBtnText = "Edit"; 
+            EditBtnText = "Editer"; 
             Edit = false;
             box = await Api.GetboxAsync(Convert.ToInt32(query["name"]));
-           
-            KasseNavn = "Kasse: " + box.name;
-            CurrentZone = box.position.zone.name.ToString();
-            CurrentZoneId = box.position.zone.id; 
-            CurrentPosition = box.position.name.ToString();
-            CurrentType = box.type.name.ToString();
-            Batch = box.batch; 
-            StartDate = box.created_at.ToString();
-            EndDate = box.expires_at.ToString();
+            if (box != null)
+            {
+                KasseNavn = "Kasse: " + box.name;
+                CurrentZone = box.position.zone.name.ToString();
+                CurrentZoneId = box.position.zone.id; 
+                CurrentPosition = box.position.name.ToString();
+                CurrentType = box.type.name.ToString();
+                Batch = box.batch; 
+                StartDate = box.created_at.ToString();
+                EndDate = box.expires_at.ToString();
+
+            }
 
         }
 
