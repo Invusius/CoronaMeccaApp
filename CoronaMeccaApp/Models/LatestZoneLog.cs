@@ -6,11 +6,12 @@ using System.Threading.Tasks;
 
 namespace CoronaMeccaApp.Models
 {
-    public class Zone
+    public class LatestZoneLog
     {
-        public string name { get; set; }
-        public int id { get; set; }
-        public LatestZoneLog latest_log { get; set; }
+
+        public string temperature { get; set; }
+        public string humidity { get; set; }
+
 
     }
 }
