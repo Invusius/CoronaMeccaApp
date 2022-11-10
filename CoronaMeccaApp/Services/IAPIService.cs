@@ -14,6 +14,7 @@ namespace CoronaMeccaApp.Services
         Task<Box> GetboxAsync(int id);
 
         Task<List<Zone>> ZoneListAsync();
+        Task<Zone> ZoneAsync(int id);
         Task<List<Position>> PositionsListAsync();
         Task<List<Position>> ZonePositionsListAsync(int id);
         Task<List<Types>> TyoesListAsync();

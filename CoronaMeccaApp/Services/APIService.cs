@@ -63,7 +63,7 @@ namespace CoronaMeccaApp.Services
 
                 string token = await SecureStorage.Default.GetAsync("oauth_token");
 
-                //client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", $"{token}");
+                client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", $"{token}");
 
                 HttpResponseMessage response = await client.GetAsync("https://vacapi.semeicardia.online/api/boxes/name/"+ id);
 
@@ -267,6 +267,34 @@ namespace CoronaMeccaApp.Services
 
                     return false;
                 }
+            }
+        }
+
+        public async Task<Zone> ZoneAsync(int id)
+        {
+            try
+            {
+
+                string token = await SecureStorage.Default.GetAsync("oauth_token");
+                client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", $"{token}");
+
+
+                HttpResponseMessage response = await client.GetAsync("https://vacapi.semeicardia.online/api/zones/"+id);
+
+                response.EnsureSuccessStatusCode();
+                var jsonstring = await response.Content.ReadAsStringAsync();
+
+                var Zone = JsonConvert.DeserializeObject<Zone>(jsonstring);
+
+
+                return Zone;
+            }
+            catch (HttpRequestException e)
+            {
+
+                Console.WriteLine("error" + e);
+                return null;
+
             }
         }
     }

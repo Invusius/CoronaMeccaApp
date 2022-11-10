@@ -19,10 +19,10 @@
         </StackLayout>
         <StackLayout Margin="40">
             <Label 
-                Text="Temperatur"
+                Text="{Binding ZoneTemp}"
                 />
             <Label 
-                Text="Luftfugtighed"
+                Text="{Binding ZoneHum}"
                 />
         </StackLayout>
         <StackLayout> 
