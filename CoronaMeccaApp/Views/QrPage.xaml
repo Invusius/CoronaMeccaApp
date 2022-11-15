@@ -5,6 +5,7 @@
              x:Class="CoronaMeccaApp.QrPage"
              Title="QrPage">
     <VerticalStackLayout>
+        
         <zxing:CameraBarcodeReaderView 
             x:Name="qrReader"
             IsDetecting="True" 
@@ -12,8 +13,8 @@
             WidthRequest="300"
             HeightRequest="350"
             BarcodesDetected="CameraBarcodeReaderView_BarcodesDetected" 
-            
             />
+        
         <Label 
             x:Name="qrlable"
             Text="{Binding qrText}"

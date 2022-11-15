@@ -35,11 +35,7 @@
             Text="Log ind"
             Command="{Binding logincommand}"
             />
-        <Button 
-            Text="test Login"
-            Clicked="Button_Clicked"
-            
-            />
+        
     </VerticalStackLayout>
      
 </ContentPage>

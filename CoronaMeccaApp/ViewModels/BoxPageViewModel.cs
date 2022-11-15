@@ -78,7 +78,7 @@ namespace CoronaMeccaApp.ViewModels
         private int CurrentZoneId; 
         public async void ApplyQueryAttributes(IDictionary<string, object> query)
         {
-            EditBtnText = "Editer"; 
+            EditBtnText = "Ret"; 
             Edit = false;
             box = await Api.GetboxAsync(Convert.ToInt32(query["name"]));
             if (box != null)
@@ -133,13 +133,13 @@ namespace CoronaMeccaApp.ViewModels
             if (Edit == false)
             {
                 Edit = true;
-                EditBtnText = "Cancel"; 
+                EditBtnText = "Fortryd"; 
 
             }
             else
             {
                 Edit = false;
-                EditBtnText = "Edit";
+                EditBtnText = "Ret";
                 SelectedPosition = null;
                 SelectedType = null;
                 SelectedZone = box.position.zone;
@@ -174,7 +174,7 @@ namespace CoronaMeccaApp.ViewModels
             if (success)
             {
                 Edit = false;
-                EditBtnText = "Edit";
+                EditBtnText = "Ret";
 
 
             }

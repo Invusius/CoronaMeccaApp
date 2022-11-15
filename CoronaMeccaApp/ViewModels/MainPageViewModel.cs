@@ -18,9 +18,6 @@ namespace CoronaMeccaApp.ViewModels
 
         public Command OnListBtnClick { get; }
 
-        private string _CounterBtn;
-        public string CounterBtn { get => _CounterBtn; set { _CounterBtn = value; OnPropertyChanged(); } }
-
         private Zone _ZoneSelected;
         public Zone ZoneSelected{ get => _ZoneSelected; set { _ZoneSelected = value; OnPropertyChanged(); } }
 
@@ -38,7 +35,6 @@ namespace CoronaMeccaApp.ViewModels
 
         private async void FillList()
         {
-            CounterBtn = await SecureStorage.Default.GetAsync("oauth_token");
 
 
             zones = await Api.ZoneListAsync();

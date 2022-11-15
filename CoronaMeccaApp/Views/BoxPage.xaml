@@ -97,7 +97,7 @@
             Command="{Binding editBtn}"
             />
         <Button 
-            Text="Save"
+            Text="Gem"
             Command="{Binding saveBtn }"
             IsVisible="{Binding Edit}"
             />

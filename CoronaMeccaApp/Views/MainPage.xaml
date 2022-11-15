@@ -54,14 +54,6 @@
             </StackLayout>
 
 
-                                  
-            
-             <!-- delete this button -->
-            <Button
-                x:Name="CounterBtn"
-                Text="{Binding CounterBtn}"
-                SemanticProperties.Hint="Counts the number of times you click"
-                HorizontalOptions="Center" />
 
         </VerticalStackLayout>
     </ScrollView>
