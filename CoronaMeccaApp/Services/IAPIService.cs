@@ -10,9 +10,7 @@ namespace CoronaMeccaApp.Services
     public interface IAPIService
     {
         Task<bool> LoginAsync(User user);
-
         Task<Box> GetboxAsync(int id);
-
         Task<List<Zone>> ZoneListAsync();
         Task<Zone> ZoneAsync(int id);
         Task<List<Position>> PositionsListAsync();
@@ -21,8 +19,12 @@ namespace CoronaMeccaApp.Services
         Task<bool> CreateBox(CreateBox createBox);
         Task<bool> UpdateBox(int id, CreateBox UpdateBox);
 
-
-
-
     }
 }
+
+
+
+
+
+
+

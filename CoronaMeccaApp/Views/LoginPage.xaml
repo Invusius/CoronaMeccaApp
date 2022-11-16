@@ -5,18 +5,15 @@
              Title="LoginPage">
     <VerticalStackLayout>
         <StackLayout VerticalOptions="Center" HorizontalOptions="Center"  >
-          
         <Label 
             Text="Log ind"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
-            
         </StackLayout>
         <Entry 
             x:Name="Username"
             Placeholder="Brugernavn"
             Text="{Binding Username}"
-            
             />
         <Entry 
             x:Name="Password"
@@ -28,14 +25,15 @@
             x:Name="loginError"
             Text="{Binding LoginError}"
             TextColor="Red"
-            
             />
         <Button 
             x:Name="LoginBTN"
             Text="Log ind"
             Command="{Binding logincommand}"
             />
-        
     </VerticalStackLayout>
-     
 </ContentPage>
+    
+    
+    
+    

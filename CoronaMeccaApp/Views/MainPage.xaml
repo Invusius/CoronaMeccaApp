@@ -4,21 +4,18 @@
              x:Class="CoronaMeccaApp.MainPage">
 
     <ScrollView >
-
         <VerticalStackLayout>
-                <Button 
+            <Button 
                 Text="Log ud"
                 Command="{Binding OnLOgoutBtn}"
                 WidthRequest="80"
                 VerticalOptions="Start"
                 HorizontalOptions="Start"
                 />
-
             <StackLayout 
                 Padding="100"
                 HorizontalOptions="Center"
                 VerticalOptions="Center">
-                
                 <CollectionView  ItemsSource="{Binding zones}" SelectedItem="{Binding ZoneSelected}" SelectionMode="Single" SelectionChangedCommand="{Binding OnListBtnClick}" >
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
@@ -31,7 +28,6 @@
                                     <ColumnDefinition Width="Auto" />
                                     <ColumnDefinition Width="Auto" />
                                 </Grid.ColumnDefinitions>
-                          
                                 <Label Grid.Column="1"
                                   Text="{Binding name}"
                                   FontAttributes="Bold" />
@@ -41,7 +37,7 @@
                                         <VisualState Name="Selected" >
                                             <VisualState.Setters>
                                                 <Setter Property="BackgroundColor" Value="Black" />
-                                            </VisualState.Setters>    
+                                            </VisualState.Setters>
                                         </VisualState>
                                     </VisualStateGroup>
                                 </VisualStateManager.VisualStateGroups>
@@ -50,9 +46,6 @@
                     </CollectionView.ItemTemplate>
                 </CollectionView>
             </StackLayout>
-
-
-
         </VerticalStackLayout>
     </ScrollView>
 

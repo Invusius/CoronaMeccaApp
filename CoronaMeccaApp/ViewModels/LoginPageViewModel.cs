@@ -23,39 +23,24 @@ namespace CoronaMeccaApp.ViewModels
         private string _LoginError;
         public string LoginError { get => _LoginError; set { _LoginError = value; OnPropertyChanged(); } }
 
-       
-
         public LoginPageViewModel()
         {
             logincommand = new Command(LoginBTN_Clicked);
-            //LoginError = ""; 
         }
-        //string test; 
-
         private async void LoginBTN_Clicked(object sender)
         {
-            
             if (Username != null && Password != null)
             {
-
                 await login();
-
             }
             else
             {
-
                 LoginError = "Udfyld venligst alle felterne";
-
             }
-
         }
-
-
         private async Task<bool> login()
         {
-
             APIService api = new APIService();
-
 
             User loginUser = new User() {
                 email = Username,
@@ -67,22 +52,15 @@ namespace CoronaMeccaApp.ViewModels
             {
                 // Set navigation to home setting
                 await Shell.Current.GoToAsync("//Home");
-
                 // Navigate to mainpage
                 await Shell.Current.GoToAsync($"//{nameof(MainPage)}");
                 return true;
             }
             else
             {
-
                 LoginError = "brugernavn eller password er forkert ";
                 return false;
             }
-
-
         }
-
-
-
     }
 }

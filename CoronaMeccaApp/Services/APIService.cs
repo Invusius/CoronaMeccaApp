@@ -37,11 +37,7 @@ namespace CoronaMeccaApp.Services
                 {
                     return false;
                 }
-
                 var jsonstring = await response.Content.ReadAsStringAsync();
-
-                //dynamic values = JsonConvert.DeserializeObject<dynamic>(jsonstring);
-
                 if (jsonstring != null)
                 {
                     

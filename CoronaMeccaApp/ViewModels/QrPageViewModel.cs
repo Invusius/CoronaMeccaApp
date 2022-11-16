@@ -30,8 +30,6 @@ namespace CoronaMeccaApp.ViewModels
         public QrPageViewModel()
         {
             addBtnCommand = new Command(addBtnClick);
-            //QrRead = new barc(CameraBarcodeReaderView_BarcodesDetected);
-            //qrText = "qr test";
             addBtnSource = "plusnofill.png";
 
         }
