@@ -43,8 +43,6 @@
                                                 <Setter Property="BackgroundColor" Value="Black" />
                                             </VisualState.Setters>    
                                         </VisualState>
-                                        
-
                                     </VisualStateGroup>
                                 </VisualStateManager.VisualStateGroups>
                             </Grid>

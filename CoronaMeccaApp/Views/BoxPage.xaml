@@ -5,20 +5,17 @@
              Title="BoxPage">
     
     <VerticalStackLayout>
-            
             <Button 
                 Text="back"
                 Command="{Binding backBtn}"
                 WidthRequest="80"
                 HorizontalOptions="Start"
-
                 />
             <Label 
                 Text="{Binding KasseNavn}"
                 VerticalOptions="Center" 
                 HorizontalOptions="Center"
                 Margin="10"/>
-
         <StackLayout Margin="10"> 
             
             <Label 
